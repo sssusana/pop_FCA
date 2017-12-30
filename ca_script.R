@@ -85,14 +85,45 @@ as.matrix(rows_2012$cos2)
 
 ####2014 dataset
 
+#overall
+res.ca2014 <- CA(pop_2014v, graph = TRUE,ncp = 2)
+
+#rowss
+rows_2014 <- get_ca_row(res.ca2014)
+
+
+corrplot(as.matrix(rows_2014$cos2), is.corr = F, method = "color", tl.col = "black",
+         tl.cex = 0.8, cl.pos = "n")
+
+fviz_ca_row(res.ca2014, repel = TRUE)
+fviz_ca_row(res.ca2014, col.row = "cos2",
+            gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"), 
+            repel = TRUE, )
+
+#columns 
+col_2014 <- get_ca_col(res.ca2014)
+corrplot(as.matrix(col_2012$cos2), is.corr = F,  method = "color", tl.col = "black",
+         tl.cex = 0.8, cl.pos = "n" )
 
 
 ####2016 dataset
-pop_2016 <- read.csv("~/Desktop/NOVA IMS/DataAnalysis/projeto/pop_factorial/pop_2016v", header = TRUE, row.names = 2)
-pop_2016 <- subset(pop_2016, select = -c(X))
-res_ca2016 <- ca(pop_2016)
+pop_2016v <- read.csv("~/Desktop/NOVA IMS/DataAnalysis/projeto/pop_factorial/pop_2016v", header=T, row.names = 2)
+View(pop_2016v)
+pop_2016v <- subset(pop_2016v, select = -c (X))
+
 fviz_eig(res_ca2016, addlabels = TRUE)
 
+#overall
+res.ca2016 <- CA(pop_2016v, graph = TRUE,ncp = 2)
 
+rows_2016 <- get_ca_row(res.ca2016)
+
+corrplot(as.matrix(rows_2016$cos2), is.corr = F, method = "color", tl.col = "black",
+         tl.cex = 0.8, cl.pos = "n")
+
+#columns 
+col_2016 <- get_ca_col(res.ca2016)
+corrplot(as.matrix(col_2016$cos2), is.corr = F,  method = "color", tl.col = "black",
+         tl.cex = 0.8, cl.pos = "n" )
 
 
