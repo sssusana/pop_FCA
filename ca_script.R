@@ -56,16 +56,18 @@ col_2012 <- get_ca_col(res.ca_ade)
 corrplot(as.matrix(col_2012$cos2), is.corr = F,  method = "color", tl.col = "black",
          tl.cex = 0.8, cl.pos = "n" )
 
+as.matrix(col_2012$cos2)
+
 #viz rows
 fviz_ca_row(res.ca_ade, repel = TRUE)
 fviz_ca_row(res.ca_ade, col.row = "cos2",
             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"), 
             repel = TRUE)
 
-#correlations - keep this?
 corrplot(as.matrix(rows_2012$cos2), is.corr = F, method = "color", tl.col = "black",
          tl.cex = 0.8, cl.pos = "n" )
 
+as.matrix(rows_2012$cos2)
 
 #(not as cool as the above one)
 fviz_ca_biplot(res.ca_ade, 
@@ -80,11 +82,17 @@ fviz_ca_col(res.ca_ade, col.col = "cos2",
 
 
 as.matrix(rows_2012$cos2)
+
+####2014 dataset
+
+
+
 ####2016 dataset
 pop_2016 <- read.csv("~/Desktop/NOVA IMS/DataAnalysis/projeto/pop_factorial/pop_2016v", header = TRUE, row.names = 2)
 pop_2016 <- subset(pop_2016, select = -c(X))
 res_ca2016 <- ca(pop_2016)
 fviz_eig(res_ca2016, addlabels = TRUE)
+
 
 
 
